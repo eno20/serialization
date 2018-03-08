@@ -1,0 +1,8 @@
+syntax = "proto3";
+package msgs;
+
+option java_package = "com.uangel.marshal.proto";
+
+message Person5 {
+  string name = 1;
+}
