@@ -1,4 +1,4 @@
-namespace java com.uangel.marshal.thrift
+namespace java com.uangel.marshal.thrift.service
 
 service MapTransferService {
   Parameter transfer(1:Parameter image)
