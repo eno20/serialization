@@ -14,22 +14,26 @@ import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.uangel.marshal.thrift.service.MapTransferService;
 import com.uangel.marshal.thrift.service.Parameter;
 
 public class ThriftBlockingClient {
-	private void invoke() {
+	private static final Logger logger = LoggerFactory.getLogger(ThriftBlockingClient.class);
+    private static final int port = 8081;
+	
+	private static void invoke() {
+		TTransport transport;
         try {
-        	System.out.println("start bocking client...");
+        	logger.info("start bocking client...");
 			Instant start = Instant.now();
 			
-			TTransport transport = new TSocket("localhost", 8080);
- 
+			transport = new TSocket("localhost", port);
             TProtocol protocol = new TBinaryProtocol(transport);
-//          TProtocol protocol = new TCompactProtocol(transport);
  
-            MapTransferService.Client bkc = new MapTransferService.Client(protocol);
+            MapTransferService.Client client = new MapTransferService.Client(protocol);
             transport.open();
             
 			Path sampleImg = Paths.get("src/main/resources/SampleImg2mb.jpg");
@@ -37,27 +41,24 @@ public class ThriftBlockingClient {
 			for (int i = 0; i < 100; i++) {
 				// 서버에 보낼 요청 메시지를 생성
 				param = new Parameter(i, System.currentTimeMillis() + ".jpg", ByteBuffer.wrap(Files.readAllBytes(sampleImg)));
-				bkc.transfer(param);
-				System.out.println("complete to send image file" + i);
-				transport.close();
+				client.transfer(param);
+				logger.info("complete to send image file" + i);
 			}
 			
+			transport.close();
 			Duration elapsed = Duration.between(start, Instant.now());
-			System.out.println("Elapsed(millis): " + elapsed.toMillis());
+			logger.info("Elapsed(millis): " + elapsed.toMillis());
             
         } catch (TTransportException e) {
             e.printStackTrace();
         } catch (TException e) {
             e.printStackTrace();
         } catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
  
     public static void main(String[] args) {
-    	ThriftBlockingClient client = new ThriftBlockingClient();
-        client.invoke();
- 
+        invoke();
     }
 }

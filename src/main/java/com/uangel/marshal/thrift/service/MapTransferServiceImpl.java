@@ -15,25 +15,26 @@ public class MapTransferServiceImpl implements MapTransferService.Iface {
 
 	@Override
 	public Parameter transfer(Parameter image) throws TException {
-		
+
 		Instant start = Instant.now();
 		String filename;
+		filename = "src/main/resources/received/" + image.getImageName();
+
+		FileChannel channnel;
 		try {
-			filename = "src/main/resources/received/" + image.getImageName();
-		
-			FileChannel channnel = new FileOutputStream(filename).getChannel();
+			channnel = new FileOutputStream(filename).getChannel();
 			channnel.write(ByteBuffer.wrap(image.getImageMap()));
 			channnel.close();
-			
-			System.out.println(image.getImageName() + " is saved");
-			Duration elapsed = Duration.between(start, Instant.now());
-			
-			System.out.println("Elapsed(millis): " + elapsedTime.getAndAdd(elapsed.toMillis()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		return null;
+
+		System.out.println(image.getImageName() + " is saved");
+		Duration elapsed = Duration.between(start, Instant.now());
+
+		System.out.println("Elapsed(millis): " + elapsedTime.getAndAdd(elapsed.toMillis()));
+		return image;//return null; 일때 unknown error 발생
 	}
 
 }
