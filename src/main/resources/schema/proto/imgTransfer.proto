@@ -1,0 +1,16 @@
+syntax = "proto3";
+package imgtransfer;
+
+option java_multiple_files = true;
+option java_package = "com.uangel.marshal.proto.service";
+option java_outer_classname = "MapTransferService";
+
+service MapTransfer {
+  rpc transfer(Parameter) returns (Parameter) {}
+}
+
+message Parameter {
+  int32 id = 1;
+  string imageName = 2;
+  bytes imageMap = 3;
+}
