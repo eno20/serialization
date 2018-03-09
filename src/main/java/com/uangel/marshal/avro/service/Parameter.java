@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Parameter extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -3221682166562208057L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Parameter\",\"namespace\":\"com.uangel.marshal.avro.service2\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"imageName\",\"type\":\"string\"},{\"name\":\"imageMap\",\"type\":\"bytes\"},{\"name\":\"imageType\",\"type\":\"string\"}]}");
+  private static final long serialVersionUID = -7666505601162813257L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Parameter\",\"namespace\":\"com.uangel.marshal.avro.service\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"imageName\",\"type\":\"string\"},{\"name\":\"imageMap\",\"type\":\"bytes\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -54,7 +54,6 @@ public class Parameter extends org.apache.avro.specific.SpecificRecordBase imple
   @Deprecated public int id;
   @Deprecated public java.lang.CharSequence imageName;
   @Deprecated public java.nio.ByteBuffer imageMap;
-  @Deprecated public java.lang.CharSequence imageType;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -68,13 +67,11 @@ public class Parameter extends org.apache.avro.specific.SpecificRecordBase imple
    * @param id The new value for id
    * @param imageName The new value for imageName
    * @param imageMap The new value for imageMap
-   * @param imageType The new value for imageType
    */
-  public Parameter(java.lang.Integer id, java.lang.CharSequence imageName, java.nio.ByteBuffer imageMap, java.lang.CharSequence imageType) {
+  public Parameter(java.lang.Integer id, java.lang.CharSequence imageName, java.nio.ByteBuffer imageMap) {
     this.id = id;
     this.imageName = imageName;
     this.imageMap = imageMap;
-    this.imageType = imageType;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
@@ -84,7 +81,6 @@ public class Parameter extends org.apache.avro.specific.SpecificRecordBase imple
     case 0: return id;
     case 1: return imageName;
     case 2: return imageMap;
-    case 3: return imageType;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -96,7 +92,6 @@ public class Parameter extends org.apache.avro.specific.SpecificRecordBase imple
     case 0: id = (java.lang.Integer)value$; break;
     case 1: imageName = (java.lang.CharSequence)value$; break;
     case 2: imageMap = (java.nio.ByteBuffer)value$; break;
-    case 3: imageType = (java.lang.CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -150,22 +145,6 @@ public class Parameter extends org.apache.avro.specific.SpecificRecordBase imple
   }
 
   /**
-   * Gets the value of the 'imageType' field.
-   * @return The value of the 'imageType' field.
-   */
-  public java.lang.CharSequence getImageType() {
-    return imageType;
-  }
-
-  /**
-   * Sets the value of the 'imageType' field.
-   * @param value the value to set.
-   */
-  public void setImageType(java.lang.CharSequence value) {
-    this.imageType = value;
-  }
-
-  /**
    * Creates a new Parameter RecordBuilder.
    * @return A new Parameter RecordBuilder
    */
@@ -200,7 +179,6 @@ public class Parameter extends org.apache.avro.specific.SpecificRecordBase imple
     private int id;
     private java.lang.CharSequence imageName;
     private java.nio.ByteBuffer imageMap;
-    private java.lang.CharSequence imageType;
 
     /** Creates a new Builder */
     private Builder() {
@@ -225,10 +203,6 @@ public class Parameter extends org.apache.avro.specific.SpecificRecordBase imple
         this.imageMap = data().deepCopy(fields()[2].schema(), other.imageMap);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.imageType)) {
-        this.imageType = data().deepCopy(fields()[3].schema(), other.imageType);
-        fieldSetFlags()[3] = true;
-      }
     }
 
     /**
@@ -248,10 +222,6 @@ public class Parameter extends org.apache.avro.specific.SpecificRecordBase imple
       if (isValidValue(fields()[2], other.imageMap)) {
         this.imageMap = data().deepCopy(fields()[2].schema(), other.imageMap);
         fieldSetFlags()[2] = true;
-      }
-      if (isValidValue(fields()[3], other.imageType)) {
-        this.imageType = data().deepCopy(fields()[3].schema(), other.imageType);
-        fieldSetFlags()[3] = true;
       }
     }
 
@@ -371,45 +341,6 @@ public class Parameter extends org.apache.avro.specific.SpecificRecordBase imple
       return this;
     }
 
-    /**
-      * Gets the value of the 'imageType' field.
-      * @return The value.
-      */
-    public java.lang.CharSequence getImageType() {
-      return imageType;
-    }
-
-    /**
-      * Sets the value of the 'imageType' field.
-      * @param value The value of 'imageType'.
-      * @return This builder.
-      */
-    public com.uangel.marshal.avro.service.Parameter.Builder setImageType(java.lang.CharSequence value) {
-      validate(fields()[3], value);
-      this.imageType = value;
-      fieldSetFlags()[3] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'imageType' field has been set.
-      * @return True if the 'imageType' field has been set, false otherwise.
-      */
-    public boolean hasImageType() {
-      return fieldSetFlags()[3];
-    }
-
-
-    /**
-      * Clears the value of the 'imageType' field.
-      * @return This builder.
-      */
-    public com.uangel.marshal.avro.service.Parameter.Builder clearImageType() {
-      imageType = null;
-      fieldSetFlags()[3] = false;
-      return this;
-    }
-
     @Override
     @SuppressWarnings("unchecked")
     public Parameter build() {
@@ -418,7 +349,6 @@ public class Parameter extends org.apache.avro.specific.SpecificRecordBase imple
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.Integer) defaultValue(fields()[0]);
         record.imageName = fieldSetFlags()[1] ? this.imageName : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.imageMap = fieldSetFlags()[2] ? this.imageMap : (java.nio.ByteBuffer) defaultValue(fields()[2]);
-        record.imageType = fieldSetFlags()[3] ? this.imageType : (java.lang.CharSequence) defaultValue(fields()[3]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

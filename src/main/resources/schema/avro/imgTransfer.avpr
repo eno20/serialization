@@ -1,23 +1,19 @@
-
 {
-"namespace":"com.uangel.marshal.avro.service2",
-"protocol":"MapTransferService",
-"types":[
-	{"name": "Parameter", "type": "record",
-     "fields": [
-          {"name": "id",   "type": "int"},
-          {"name": "imageName", "type": "string"},
-          {"name": "imageMap", "type": "bytes"},
-          {"name": "imageType", "type": "string"}
-
-      ]
+	"namespace":"com.uangel.marshal.avro.service",
+	"protocol":"MapTransferService",
+	"types":[
+		{"name": "Parameter", "type": "record",
+	     "fields": [
+	          {"name": "id",   "type": "int"},
+	          {"name": "imageName", "type": "string"},
+	          {"name": "imageMap", "type": "bytes"}
+	      ]
+		}
+	],
+	"messages":{
+	    "transfer":{
+	        "request":[{"name":"image","type":"Parameter"}],
+	        "response":"Parameter"
+	    }
 	}
-],
-"messages":{
-    "transfer":{
-        "request":[{"name":"image","type":"Parameter"}],
-        "response":"Parameter"
-    }
-}
-
 }

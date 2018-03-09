@@ -8,7 +8,7 @@ package com.uangel.marshal.avro.service;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public interface MapTransferService {
-  public static final org.apache.avro.Protocol PROTOCOL = org.apache.avro.Protocol.parse("{\"protocol\":\"MapTransferService\",\"namespace\":\"com.uangel.marshal.avro.service2\",\"types\":[{\"type\":\"record\",\"name\":\"Parameter\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"imageName\",\"type\":\"string\"},{\"name\":\"imageMap\",\"type\":\"bytes\"},{\"name\":\"imageType\",\"type\":\"string\"}]}],\"messages\":{\"transfer\":{\"request\":[{\"name\":\"image\",\"type\":\"Parameter\"}],\"response\":\"Parameter\"}}}");
+  public static final org.apache.avro.Protocol PROTOCOL = org.apache.avro.Protocol.parse("{\"protocol\":\"MapTransferService\",\"namespace\":\"com.uangel.marshal.avro.service\",\"types\":[{\"type\":\"record\",\"name\":\"Parameter\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"imageName\",\"type\":\"string\"},{\"name\":\"imageMap\",\"type\":\"bytes\"}]}],\"messages\":{\"transfer\":{\"request\":[{\"name\":\"image\",\"type\":\"Parameter\"}],\"response\":\"Parameter\"}}}");
   /**
    */
   com.uangel.marshal.avro.service.Parameter transfer(com.uangel.marshal.avro.service.Parameter image) throws org.apache.avro.AvroRemoteException;
