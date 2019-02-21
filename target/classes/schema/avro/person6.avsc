@@ -1,9 +1,0 @@
-{
-"namespace":"com.uangel.marshal.avro.test",
-"type": "record",
-"name" : "Person6",
-"fields": [
-   {"name":"name1","type":"string"},
-   {"name":"email1","type":"string"}
-]
-}

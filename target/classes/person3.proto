@@ -1,9 +1,0 @@
-syntax = "proto3";
-package msgs;
-
-option java_package = "com.uangel.marshal.proto";
-
-message Person3 {
-  string email = 1;
-  string name = 2;
-}
