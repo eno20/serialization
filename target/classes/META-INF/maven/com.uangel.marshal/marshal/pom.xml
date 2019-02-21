@@ -179,7 +179,8 @@
 		       <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}</protocArtifact>
 		       <pluginId>grpc-java</pluginId>
 		       <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
-		       <outputDirectory>src/main/java</outputDirectory>
+		         <protoSourceRoot>src/main/resources/schema/proto/</protoSourceRoot>
+<!-- 		       <outputDirectory>src/main/java</outputDirectory> -->
      	     </configuration>
 	         <executions>
 		       <execution>
@@ -194,32 +195,18 @@
 	        <groupId>org.apache.avro</groupId>
 	        <artifactId>avro-maven-plugin</artifactId>
 	        <version>${avro.version}</version>
-	        <executions>
-	          <execution>
-	            <phase>generate-sources</phase>
-	            <goals>
-	              <goal>schema</goal>
-	              <goal>protocol</goal>
-	              <goal>idl-protocol</goal>
-	            </goals>
-	            <configuration>
-	              <sourceDirectory>${project.basedir}/src/main/resources/schema/avro</sourceDirectory>
-	              <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
-	            </configuration>
-	          </execution>
-	        </executions>
 	      </plugin>
-<!--           <plugin> -->
-<!--             <artifactId>maven-clean-plugin</artifactId> -->
-<!--             <configuration> -->
-<!--               <verbose>true</verbose> -->
-<!--               <filesets> -->
-<!--                 <fileset> -->
-<!--                   <directory>${project.basedir}/${protobuf.output}</directory> -->
-<!--                 </fileset> -->
-<!--               </filesets> -->
-<!--             </configuration> -->
-<!--           </plugin> -->
+          <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <configuration>
+              <verbose>true</verbose>
+              <filesets>
+                <fileset>
+                  <directory>${project.basedir}/${protobuf.output}</directory>
+                </fileset>
+              </filesets>
+            </configuration>
+          </plugin>
 	    </plugins>
   </build>
 </project>
